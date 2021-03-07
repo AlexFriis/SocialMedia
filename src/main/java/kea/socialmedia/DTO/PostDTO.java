@@ -25,6 +25,4 @@ public class PostDTO {
     public void addPost(Post post) {
         this.posts.add(post);
     }
-
-    public void setPrivate(Post post) { this.posts.set(i)}
 }

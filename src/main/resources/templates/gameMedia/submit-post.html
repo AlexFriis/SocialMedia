@@ -17,108 +17,120 @@
             <form autocomplete="off" action="#" th:action="@{/gameMedia/submit-post}"
                   th:object="${form}" method="post" class="form-horizontal"
                   role="form">
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label">Author</label>
-                    </div>
-                    <div class="field-body">
-                        <div class="field">
-                            <p class="control is-expanded">
-                                <input class="input" type="text" placeholder="Name">
-                            </p>
-                        </div>
-                        <div class="field">
-                            <p class="control is-expanded">
-                                <input class="input is-success" type="text" placeholder="Date (XX-XX-XXXX)" value="07-03-2021">
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <fieldset th:each="post, itemStat : *{posts}">
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Author</label>
+                            </div>
 
-                <div class="field is-horizontal">
-                    <div class="field-label"></div>
-                    <div class="field-body">
-                        <div class="field is-expanded">
-                            <div class="field has-addons">
-                                <p class="control">
-                                    <a class="button is-static">
-                                        Title
-                                    </a>
-                                </p>
-                                <p class="control is-expanded">
-                                    <input class="input" type="text" placeholder="Post Title">
-                                </p>
+                            <div class="field-body">
+                                <div class="field">
+                                    <p class="control is-expanded">
+                                        <input class="input" type="text" placeholder="Name" th:field="*{posts[__${itemStat.index}__].author}">
+                                    </p>
+                                </div>
+                                <div class="field">
+                                    <p class="control is-expanded">
+                                        <input class="input is-success" type="text" placeholder="Date (XX-XX-XXXX)"
+                                               value="07-03-2021" th:field="*{posts[__${itemStat.index}__].date}">
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="field is-horizontal">
-                    <div class="field-label">
-                        <label class="label">Visibility</label>
-                    </div>
-                    <div class="field-body">
-                        <div class="field is-narrow">
-                            <div class="control">
-                                <label class="radio">
-                                    <input type="radio" value="0"
-                                           th:checked="*{isPublicOrPrivate}">
-                                    Public
-                                </label>
-                                <label class="radio">
-                                    <input type="radio" name="member" value="1"
-                                           th:checked="*{isPublicOrPrivate}">
-                                    Private
-                                </label>
+                        <div class="field is-horizontal">
+                            <div class="field-label"></div>
+                            <div class="field-body">
+                                <div class="field is-expanded">
+                                    <div class="field has-addons">
+                                        <p class="control">
+                                            <a class="button is-static">
+                                                Title
+                                            </a>
+                                        </p>
+                                        <p class="control is-expanded">
+                                            <input type="text"
+                                                   th:field="*{posts[__${itemStat.index}__].title}"
+                                                   class="input"
+                                                   id="date"
+                                                   placeholder="Title (What game you are posting about)">
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label">Subject</label>
-                    </div>
-                    <div class="field-body">
-                        <div class="field">
-                            <div class="control">
-                                <input class="input is-danger" type="text" placeholder="e.g. Partnership opportunity">
+                        <div class="field is-horizontal">
+                            <div class="field-label">
+                                <label class="label">Visibility</label>
                             </div>
-                            <p class="help is-danger">
-                                This field is required
-                            </p>
+                            <div class="field-body">
+                                <div class="field is-narrow">
+                                    <div class="control">
+                                        <label class="radio">
+                                            <input type="radio" value="0"
+                                                   th:checked="*{posts[__${itemStat.index}__].isPublicOrPrivate()}">
+                                            Public
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="member" value="1"
+                                                   th:checked="*{posts[__${itemStat.index}__].isPublicOrPrivate()}">
+                                            Private
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label">Question</label>
-                    </div>
-                    <div class="field-body">
-                        <div class="field">
-                            <div class="control">
-                                <textarea class="textarea" placeholder="Post content"></textarea>
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Subject</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <input class="input is-danger" type="text"
+                                               placeholder="Subject eg. Epic DS3 Achievement"
+                                               th:field="*{posts[__${itemStat.index}__].subject}">
+                                    </div>
+                                    <p class="help is-danger">
+                                        This field is required
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="field is-horizontal">
-                    <div class="field-label">
-                        <!-- Left empty for spacing -->
-                    </div>
-                    <div class="field-body">
-                        <div class="field is-grouped">
-                            <div class="control">
-                                <button type="submit" class="button is-link" th:value="Submit"></button>
+                        <div class="field is-horizontal">
+                            <div class="field-label is-normal">
+                                <label class="label">Question</label>
                             </div>
-                            <div class="control">
-                                <button type="reset" class="button is-link is-light" th:value="Reset"></button>
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="control">
+                                        <textarea class="textarea" placeholder="Post content"
+                                                  th:field="*{posts[__${itemStat.index}__].content}"
+                                        ></textarea>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+
+                        <div class="field is-horizontal">
+                            <div class="field-label">
+                                <!-- Left empty for spacing -->
+                            </div>
+                            <div class="field-body">
+                                <div class="field is-grouped">
+                                    <div class="control">
+                                        <button type="submit" class="button is-primary" th:value="Submit"></button>
+                                    </div>
+                                    <div class="control">
+                                        <button type="reset" class="button is-danger is-light" th:value="Reset"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </fieldset>
             </form>
         </div>
     </div>

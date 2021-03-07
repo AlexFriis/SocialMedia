@@ -29,11 +29,7 @@ public class PostController {
     @GetMapping("submit")
     public String showSubmitPostForm(Model model) {
         PostDTO postsForm = new PostDTO();
-
-        for (int i = 1; i <= 3; i++) {
-            postsForm.addPost(new Post());
-        }
-
+        postsForm.addPost(new Post());
         model.addAttribute("form", postsForm);
 
         return "gameMedia/submit-post";

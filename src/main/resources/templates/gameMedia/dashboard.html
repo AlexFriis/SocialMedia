@@ -3,9 +3,45 @@
       xmlns:th="http://www.thymeleaf.org">
 <head th:insert="fragments/head :: head">
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <title>Title</title>
 </head>
 <body>
-
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1> Posts </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th> Author </th>
+                    <th> Date </th>
+                    <th> Public? </th>
+                    <th> Title </th>
+                    <th> Subject </th>
+                    <th> Content </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${posts.empty}">
+                    <td colspan="2"> No Books Available </td>
+                </tr>
+                <tr th:each="post : ${posts}">
+                    <td><span th:text="${post.author}"> Author </span></td>
+                    <td><span th:text="${post.date}"> Date </span></td>
+                    <td><span th:text="${post.publicOrPrivate}"> Public or private? </span></td>
+                    <td><span th:text="${post.title}"> Title </span></td>
+                    <td><span th:text="${post.subject}"> Subject </span></td>
+                    <td><span th:text="${post.content}"> Content </span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 </body>
 </html>

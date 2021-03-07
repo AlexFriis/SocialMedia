@@ -1,0 +1,6 @@
+todo: når alle posts printes ud, printes kun PUBLIC? ud for visibility
+
+todo: fix public or private
+
+todo: make dashboard in bulma, like studentadmin maybe, tho big boxes for content n stuff. check documentation maybe
+
