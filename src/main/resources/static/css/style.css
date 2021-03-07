@@ -28,3 +28,7 @@ input[type="user_name"]::placeholder {
 .footer {
     width: 100%;
 }
+
+.container-row{
+    padding: 125px 20px;
+}

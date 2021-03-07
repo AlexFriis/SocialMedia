@@ -1,22 +1,15 @@
 package kea.socialmedia.service;
 
 import kea.socialmedia.models.Post;
-import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@Service
-public class PostService {
+public interface PostService {
 
-    List<Post> postList = new ArrayList<>();
+    List<Post> getAll();
 
-    public List<Post> getAllPost() {
-        return postList;
-    }
+    void saveAll(List<Post> posts);
 
-    public void addPost(Post post) {
-        postList.add(post);
-    }
+    void save(Post post);
 
 }
