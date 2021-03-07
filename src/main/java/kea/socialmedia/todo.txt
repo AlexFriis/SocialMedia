@@ -4,6 +4,8 @@ todo: fix public or private
 
 todo: make dashboard in bulma, like studentadmin maybe, tho big boxes for content n stuff. check documentation maybe
 
+- center stuff in addPost, evt hero + box like login screen?
+
 todo: fix buttons on addpost
 
 fix css get shit?
