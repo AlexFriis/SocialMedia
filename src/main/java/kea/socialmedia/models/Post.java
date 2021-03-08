@@ -8,18 +8,18 @@ public class Post {
     private String subject;
     private String content;
     private String date;
-    private boolean publicOrPrivate;
+    private boolean publicPost;
 
     public Post() {
     }
 
-    public Post(long id, String title, String author, String content, String date, boolean publicOrPrivate) {
+    public Post(long id, String title, String author, String content, String date, boolean publicPost) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.content = content;
         this.date = date;
-        this.publicOrPrivate = publicOrPrivate;
+        this.publicPost = publicPost;
     }
 
     public long getId() {
@@ -70,11 +70,11 @@ public class Post {
         this.date = date;
     }
 
-    public boolean isPublicOrPrivate() {
-        return publicOrPrivate;
+    public boolean isPublicPost() {
+        return publicPost;
     }
 
-    public void setPublicOrPrivate(boolean publicOrPrivate) {
-        this.publicOrPrivate = publicOrPrivate;
+    public void setPublicPost(boolean publicPost) {
+        this.publicPost = publicPost;
     }
 }

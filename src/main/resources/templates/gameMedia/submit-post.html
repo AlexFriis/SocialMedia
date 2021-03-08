@@ -68,13 +68,13 @@
                                 <div class="field is-narrow">
                                     <div class="control">
                                         <label class="radio">
-                                            <input type="radio" value="0"
-                                                   th:checked="*{posts[__${itemStat.index}__].isPublicOrPrivate()}">
+                                            <input type="radio" value="true"
+                                                   th:checked="*{posts[__${itemStat.index}__].isPublicPost() == true}">
                                             Public
                                         </label>
                                         <label class="radio">
-                                            <input type="radio" name="member" value="1"
-                                                   th:checked="*{posts[__${itemStat.index}__].isPublicOrPrivate()}">
+                                            <input type="radio" value="false"
+                                                   th:checked="*{posts[__${itemStat.index}__].isPublicPost() == false}">
                                             Private
                                         </label>
                                     </div>
@@ -122,10 +122,10 @@
                             <div class="field-body">
                                 <div class="field is-grouped">
                                     <div class="control">
-                                        <button type="submit" class="button is-primary" th:value="Submit"></button>
+                                        <button type="submit" class="button is-primary">Submit</button>
                                     </div>
                                     <div class="control">
-                                        <button type="reset" class="button is-danger is-light" th:value="Reset"></button>
+                                        <button type="reset" class="button is-danger">Reset</button>
                                     </div>
                                 </div>
                             </div>

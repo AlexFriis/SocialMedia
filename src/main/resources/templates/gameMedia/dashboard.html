@@ -33,7 +33,7 @@
                 <tr th:each="post : ${posts}">
                     <td><span th:text="${post.author}"> Author </span></td>
                     <td><span th:text="${post.date}"> Date </span></td>
-                    <td><span th:text="${post.publicOrPrivate}"> Public or private? </span></td>
+                    <td><span th:text="${post.publicPost}"> Public or private? </span></td>
                     <td><span th:text="${post.title}"> Title </span></td>
                     <td><span th:text="${post.subject}"> Subject </span></td>
                     <td><span th:text="${post.content}"> Content </span></td>
