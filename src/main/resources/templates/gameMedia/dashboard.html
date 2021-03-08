@@ -17,7 +17,7 @@
             <br>
             <div class="columns is-mobile">
                 <div class="column">
-                    <table class="table">
+                    <table class="table is-bordered">
                         <thead>
                         <tr>
                             <th> Author</th>
@@ -25,25 +25,22 @@
                             <th> Public</th>
                             <th> Game</th>
                             <th> Subject</th>
+                            <th> Content</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:if="${posts.empty}">
-                            <td colspan="2"> No Posts yet!</td>
+                            <td colspan="6"> No Posts yet!</td>
                         </tr>
                         <tr th:each="post : ${posts}">
                             <td><span th:text="${post.author}"> Author </span></td>
                             <td><span th:text="${post.date}"> Date </span></td>
                             <td><span th:text="${post.publicPost}"> Public or private? </span></td>
-                            <td><span th:text="${post.title}"> Title </span></td>
+                            <td><span th:cols="5" th:text="${post.title}"> Title </span></td>
                             <td><span th:text="${post.subject}"> Subject </span></td>
+                            <td><span rows="3" cols="30" th:text="${post.content}"> Content</span></td>
                         </tr>
-                        <tr th:each="post : ${posts}">
-                            <td style=" max-width: 40px;
-                            text-overflow: ellipsis;
-                            white-space: nowrap;">
-                                <span th:text="${post.content}"> Content </span></td>
-                        </tr>
+
                         </tbody>
                     </table>
                 </div>
