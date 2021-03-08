@@ -13,7 +13,7 @@
             <br>
         </div>
         <div class="columns is-mobile">
-            <a class="button is-primary is-medium" href="#" th:href="@{/gameMedia/dashboard}">Back to Dashboard</a>
+            <a class="button is-primary is-rounded" href="#" th:href="@{/gameMedia/dashboard}">Back to Dashboard</a>
             <form autocomplete="off" action="#" th:action="@{/gameMedia/submit-post}"
                   th:object="${form}" method="post" class="form-horizontal"
                   role="form">
@@ -68,13 +68,13 @@
                                 <div class="field is-narrow">
                                     <div class="control">
                                         <label class="radio">
-                                            <input type="radio" value="true"
-                                                   th:checked="*{posts[__${itemStat.index}__].isPublicPost() == true}">
+                                            <input type="radio" th:value="true"
+                                                   th:field="*{posts[__${itemStat.index}__].publicPost}" th:checked="*{posts[__${itemStat.index}__].publicPost}">
                                             Public
                                         </label>
                                         <label class="radio">
-                                            <input type="radio" value="false"
-                                                   th:checked="*{posts[__${itemStat.index}__].isPublicPost() == false}">
+                                            <input type="radio" th:value="false" th:field="*{posts[__${itemStat.index}__].publicPost}"
+                                                   th:checked="*{posts[__${itemStat.index}__].publicPost}">
                                             Private
                                         </label>
                                     </div>
@@ -107,7 +107,7 @@
                             <div class="field-body">
                                 <div class="field">
                                     <div class="control">
-                                        <textarea id="textarea" class="textarea" placeholder="Post content"
+                                        <textarea id="textarea" maxlength="250" class="textarea" placeholder="Post content"
                                                   th:field="*{posts[__${itemStat.index}__].content}"
                                         ></textarea>
                                     </div>
@@ -136,4 +136,12 @@
     </div>
 </div>
 </body>
+<script>
+    function textareaLengthCheck(el) {
+        var textArea = el.value.length;
+        var charactersLeft = 200 - textArea;
+        var count = document.getElementById('lblRemainingCount');
+        count.innerHTML = "Characters left: " + charactersLeft;
+    }
+</script>
 </html>
