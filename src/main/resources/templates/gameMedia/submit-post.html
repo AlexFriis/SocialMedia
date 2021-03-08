@@ -69,12 +69,11 @@
                                     <div class="control">
                                         <label class="radio">
                                             <input type="radio" th:value="true"
-                                                   th:field="*{posts[__${itemStat.index}__].publicPost}" th:checked="*{posts[__${itemStat.index}__].publicPost}">
+                                                   th:field="*{posts[__${itemStat.index}__].publicPost}">
                                             Public
                                         </label>
                                         <label class="radio">
-                                            <input type="radio" th:value="false" th:field="*{posts[__${itemStat.index}__].publicPost}"
-                                                   th:checked="*{posts[__${itemStat.index}__].publicPost}">
+                                            <input type="radio" th:value="false" th:field="*{posts[__${itemStat.index}__].publicPost}">
                                             Private
                                         </label>
                                     </div>
@@ -102,14 +101,15 @@
 
                         <div class="field is-horizontal">
                             <div class="field-label is-normal">
-                                <label class="label">Question</label>
+                                <label class="label">Content</label>
                             </div>
                             <div class="field-body">
                                 <div class="field">
                                     <div class="control">
-                                        <textarea id="textarea" maxlength="250" class="textarea" placeholder="Post content"
+                                        <textarea id="textarea" onkeyup="textareaLengthCheck(this)" maxlength="250" class="textarea" placeholder="Post content"
                                                   th:field="*{posts[__${itemStat.index}__].content}"
                                         ></textarea>
+                                        <p id="lblRemainingCount"></p>
                                     </div>
                                 </div>
                             </div>
@@ -139,7 +139,7 @@
 <script>
     function textareaLengthCheck(el) {
         var textArea = el.value.length;
-        var charactersLeft = 200 - textArea;
+        var charactersLeft = 250 - textArea;
         var count = document.getElementById('lblRemainingCount');
         count.innerHTML = "Characters left: " + charactersLeft;
     }
