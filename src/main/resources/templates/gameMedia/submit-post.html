@@ -6,18 +6,17 @@
     <title>Title</title>
 </head>
 <body>
-<div class="container-row">
+<a class="button is-primary is-rounded" id="dashboardButton" href="#" th:href="@{/gameMedia/dashboard}">Back to Dashboard</a>
+<div class="container">
     <div class="content">
-        <div class="container">
+        <div class="container-row">
             <h2 class="title is-4"><strong>Submit Post</strong></h2>
             <br>
-        </div>
-        <div class="columns is-mobile">
-            <a class="button is-primary is-rounded" href="#" th:href="@{/gameMedia/dashboard}">Back to Dashboard</a>
-            <form autocomplete="off" action="#" th:action="@{/gameMedia/submit-post}"
-                  th:object="${form}" method="post" class="form-horizontal"
-                  role="form">
-                <fieldset th:each="post, itemStat : *{posts}">
+            <div class="columns is-mobile">
+                <form autocomplete="off" action="#" th:action="@{/gameMedia/submit-post}"
+                      th:object="${form}" method="post" class="form-horizontal"
+                      role="form">
+                    <fieldset th:each="post, itemStat : *{posts}">
                         <div class="field is-horizontal">
                             <div class="field-label is-normal">
                                 <label class="label">Author</label>
@@ -26,12 +25,14 @@
                             <div class="field-body">
                                 <div class="field">
                                     <p class="control is-expanded">
-                                        <input id="name" class="input" type="text" placeholder="Name" th:field="*{posts[__${itemStat.index}__].author}">
+                                        <input id="name" class="input" type="text" placeholder="Name"
+                                               th:field="*{posts[__${itemStat.index}__].author}">
                                     </p>
                                 </div>
                                 <div class="field">
                                     <p class="control is-expanded">
-                                        <input id="date" class="input is-success" type="text" placeholder="Date (XX-XX-XXXX)"
+                                        <input id="date" class="input is-success" type="text"
+                                               placeholder="Date (XX-XX-XXXX)"
                                                value="07-03-2021" th:field="*{posts[__${itemStat.index}__].date}">
                                     </p>
                                 </div>
@@ -73,7 +74,8 @@
                                             Public
                                         </label>
                                         <label class="radio">
-                                            <input type="radio" th:value="false" th:field="*{posts[__${itemStat.index}__].publicPost}">
+                                            <input type="radio" th:value="false"
+                                                   th:field="*{posts[__${itemStat.index}__].publicPost}">
                                             Private
                                         </label>
                                     </div>
@@ -106,7 +108,8 @@
                             <div class="field-body">
                                 <div class="field">
                                     <div class="control">
-                                        <textarea id="textarea" onkeyup="textareaLengthCheck(this)" maxlength="250" class="textarea" placeholder="Post content"
+                                        <textarea id="textarea" onkeyup="textareaLengthCheck(this)" maxlength="250"
+                                                  class="textarea" placeholder="Post content"
                                                   th:field="*{posts[__${itemStat.index}__].content}"
                                         ></textarea>
                                         <p id="lblRemainingCount"></p>
@@ -130,8 +133,9 @@
                                 </div>
                             </div>
                         </div>
-                </fieldset>
-            </form>
+                    </fieldset>
+                </form>
+            </div>
         </div>
     </div>
 </div>

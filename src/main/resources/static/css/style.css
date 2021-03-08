@@ -8,6 +8,12 @@ body {
     height: 100%;
 }
 
+#dashboardButton #submitPostButton {
+    position:absolute;
+    top:5px;
+    left:5px;
+}
+
 .validation-message {
     font-style: normal;
     font-size: 12px;

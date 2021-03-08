@@ -9,39 +9,45 @@
     <title>Title</title>
 </head>
 <body>
+<a class="button is-primary is-rounded" id="submitPostButton" href="#" th:href="@{/gameMedia/submit}">Submit Post</a>
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h1> Posts </h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th> Author </th>
-                    <th> Date </th>
-                    <th> Public? </th>
-                    <th> Game </th>
-                    <th> Subject </th>
-                    <th> Content </th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:if="${posts.empty}">
-                    <td colspan="2"> No Books Available </td>
-                </tr>
-                <tr th:each="post : ${posts}">
-                    <td><span th:text="${post.author}"> Author </span></td>
-                    <td><span th:text="${post.date}"> Date </span></td>
-                    <td><span th:text="${post.publicPost}"> Public or private? </span></td>
-                    <td><span th:text="${post.title}"> Title </span></td>
-                    <td><span th:text="${post.subject}"> Subject </span></td>
-                    <td><span th:text="${post.content}"> Content </span></td>
-                </tr>
-                </tbody>
-            </table>
+    <div class="content">
+        <div class="container-row">
+            <h2 class="title is-4"><strong>Dashboard</strong></h2>
+            <br>
+            <div class="columns is-mobile">
+                <div class="column">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th> Author</th>
+                            <th> Date</th>
+                            <th> Public</th>
+                            <th> Game</th>
+                            <th> Subject</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:if="${posts.empty}">
+                            <td colspan="2"> No Posts yet!</td>
+                        </tr>
+                        <tr th:each="post : ${posts}">
+                            <td><span th:text="${post.author}"> Author </span></td>
+                            <td><span th:text="${post.date}"> Date </span></td>
+                            <td><span th:text="${post.publicPost}"> Public or private? </span></td>
+                            <td><span th:text="${post.title}"> Title </span></td>
+                            <td><span th:text="${post.subject}"> Subject </span></td>
+                        </tr>
+                        <tr th:each="post : ${posts}">
+                            <td style=" max-width: 40px;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;">
+                                <span th:text="${post.content}"> Content </span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
